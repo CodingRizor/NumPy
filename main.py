@@ -1,5 +1,7 @@
 import numpy as np
+from numpy import random
 
+"""
 # Numpy provides efficient storage
 # It also provides better way of handling data
 # It uses less memory to store data
@@ -238,4 +240,170 @@ arr29 = arr27 % 2 != 0
 print("Original Array -", arr27)
 print("Even Array -", arr27[arr28])
 print("Odd Array -", arr27[arr29])
+
+
+# ----------------------Random----------------------------
+# Random means something that can not be predicted logically.
+# Random numbers generated through a generation algorithm are called pseudo random.
+
+# Example -
+print(random.randint(990, 1000))  # randint(low, high)
+# This will generate an integer number
+
+print(random.rand())
+# This will generate a float number between 0 and 1
+
+# Generating a random array -
+print("Random array - ", random.randint(100, size=(10)))
+# The randint() method takes a size parameter where you can specify the shape of an array.
+
+print("Generating a 2D array -")
+print("2D Array -\n", random.randint(100, size=(3, 3)))
+
+print("Generating a 2D float array -")
+print("2D Float Array -\n", random.rand(3, 5))
+
+# The choice() method also allows you to return an array of values.
+# Syntax - random.choice([-, -, -]. size=(-, -))
+
+print("Random array by choice method - ")
+print("Choice -\n", random.choice([5, 2, 4, 1, 3], size=(5, 5)))
+
+print("Data Distribution -")
+print("It is a list of all possible values, and how often each value occurs.")
+print("Syntax- random.choice([-,-,-], p=[-,-,-], size=(-)")
+# The sum of all probability numbers should be 1
+
+print("Data -", random.choice([10, 20, 30, 40, 50], p=[0.2, 0.3, 0.1, 0.4, 0.0], size=20))
+print("In the above data 50 will never occur as its probability is given 0")
+print("2D Array -")
+print("Data -\n", random.choice([10, 20, 30, 40, 50], p=[0.2, 0.3, 0.1, 0.4, 0.0], size=(4, 5)))
+
+print("Random permutations - ")
+print("A permutation refers to an arrangement of elements.")
+print("The NumPy Random module provides two methods for this: shuffle() and permutation().")
+arr30 = np.array([23, 25, 27, 29])
+arr31 = np.array([24, 26, 28, 30])
+
+print("1. Shuffle means changing arrangement of elements in-place. i.e. in the array itself.")
+print("Array -", arr30)
+random.shuffle(arr30)
+print("Shuffled Array -", arr30)
+print("The shuffle() method makes changes to the original array.")
+
+print("2. Permutation")
+random.permutation(arr31)
+print("After calling permutation array -", arr31)
+print("The permutation() method returns a re-arranged array (and leaves the original array un-changed).")
+
+print("Sum of array elements -", arr31.sum())
+print("Zeroes Array -\n", np.zeros((3, 3)))
+temp = arr31[arr31 % 2 == 0]
+print("Conditional Formatting -", temp)
+
+print("Operations on array -")
+print("Original array -", arr31)
+print("Addition by 1 -", arr31+1)
+print("Subtraction by 1 -", arr31-1)
+print("Division by 2 -", arr31//2)
+print("Multiplication by 2 -", arr31*2)
+print("Squaring each element by 2 -", arr31**2)
+arr32 = np.array([[1, 2, 3], [0, 9, 8], [4, 5, 6]])
+print("Largest element is -", arr32.max())
+print("Binary operators")
+arr33 = np.array([[0, 9, 8], [4, 5, 6], [1, 2, 3]])
+print("Array sum -\n", arr32+arr33)
+print("Array multiplication -\n", arr32*arr33)
+
+# Iteration Over Array -
+# nditer - It is an efficient multidimensional iterator object using which it is possible to iterate over an array.
+print("Iteration")
+arr34 = np.arange(12)
+print(arr34.reshape(2, 6))
+for x in np.nditer(arr34):
+    print(x, end=" ")
+print("\nFortran order -")
+for x in np.nditer(arr34, order='F'):
+    print(x, end=" ")
+# for x in np.nditer(arr34, op_flags = ['readwrite']):
+#     x[...] = 5*x
+
+
+# Binary Operations -
+# Binary operators acts on bits and performs bit by bit operation.
+n1 = 10
+n2 = 11
+# 1. numpy.bitwise_and() - This function is used to Compute the bit-wise AND of two array element-wise.
+print("Bitwise_and -", np.bitwise_and(n1, n2))
+# 2. numpy.bitwise_or() - This function is used to Compute the bit-wise OR of two array element.
+print("Bitwise_or -", np.bitwise_or(n1, n2))
+# 3. numpy.bitwise_xor() - This function is used to Compute the bit-wise XOR of two array element.
+print("Bitwise_xor -", np.bitwise_xor(n1, n2))
+# 4. numpy.binary_repr(number, width=None)
+print("Binary representation of ", n1, "is", np.binary_repr(n1))  # optional parameter - width=5
+print("Binary representation of ", n2, "is", np.binary_repr(n2))
+
+# ---------------String Operations--------------------------
+# 1. numpy.char.lower()
+print("Lowercase string -", np.char.lower('DHAIRYA'))
+
+# 2. numpy.char.split()
+print("Split string -", np.char.split("D*S", sep="*"))
+
+# 3. numpy.char.join()
+print("Join string -", np.char.join('--', 'DHAIRYA'))
+
+# 4. numpy.char.count()
+print("Count -", np.char.count('DHAIRYA', 'A'))
+
+# 5. numpy.char.rfind()  # -1 for not found
+print("String Present at -", np.char.rfind("DHAIRYA", 'I'))
+
+# 6. numpy.char.isnumeric()
+print("Numeric characters -", np.char.isnumeric("1122"))
+
+# 7. numpy.char.equal()
+print("Characters are equal -", np.char.equal("DHAIRYA", "DHAIRYA"))
+
+# 8. numpy.char.not_equal()
+print("Characters are not equal -", np.char.not_equal("DHAIRYA", "DHAIRYA"))
+
+"""
+
+# --------------------------Sorting---------------------------------
+arr35 = np.array([[10, 20], [5, 7]])
+print("Sorting along first axis -\n", np.sort(arr35, axis=0))
+print("Sorting along last axis -\n", np.sort(arr35, axis=-1))
+print("Sorting along none axis -\n", np.sort(arr35, axis=None))
+
+# numpy.argsort() : This function returns the indices that would sort an array.
+arr36 = np.array([13, 15, 12, 14, 11, 16, 10])
+print('Sorted indices of original array->', np.argsort(arr36))
+
+# --------------------------Searching-------------------------------
+
+# np.max()
+print("Max element -", np.max(arr36))
+
+# np.argmax()
+print("Index of max element -", np.argmax(arr36, axis=0))
+
+# np.min()
+print("Max element -", np.min(arr36))
+
+# np.argmin()
+print("Index of min element -", np.argmin(arr36, axis=0))
+
+# np.count_nonzero
+print("Number of non zero values -", np.count_nonzero([0, 1, 0, 2, 0, 3]))
+
+# ------------------------------Random Sample-------------------------------
+# Syntax : numpy.random.random_sample(size=None)
+print("Random Sample values -", np.random.random_sample(2))
+
+
+
+
+
+
 
